@@ -1,1 +1,3 @@
-# g4g-Strings
+# String Pattern Search hands-on
+
+### KMP Algorithm

@@ -37,7 +37,7 @@ public class PatternMatch{
         j++;
       }
       if(j==m){
-        System.out.print(i-j+" ");
+        System.out.print(i-m+" ");
         j = lps[j-1];
       } else if(i<n && pat.charAt(j)!=txt.charAt(i)) {
         if(j==0){

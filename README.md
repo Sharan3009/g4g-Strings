@@ -39,10 +39,10 @@ public class PatternMatch{
       if(j==m){
         System.out.print(i-j+" ");
         j = lps[j-1];
-      } else {
+      } else if(i<n && pat.charAt(j)!=txt.charAt(i)) {
         if(j==0){
           i++;
-        } else if(i<n && pat.charAt(j)!=txt.charAt(i)){
+        } else {
           j = lps[j-1];
         }
       }

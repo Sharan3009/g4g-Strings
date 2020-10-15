@@ -50,3 +50,49 @@ public class PatternMatch{
   }
 }
 ```
+
+### Rabin-Karp Algorithm
+
+```
+import java.util.*;
+
+public class PatternMatch{
+
+  public final static int d = 256;
+  public static void RKSearch(String pat, String txt, int q){
+    int n = txt.length();
+    int m = pat.length();
+    
+    int h = 1;
+    for(int i=1;i<=m-1;i++){
+      h = (h*d)%q;
+    }
+    
+    int p=0,t=0;
+    for(int i=0;i<m;i++){
+      p = (d*p + pat.charAt(i))%q;
+      t = (d*t + txt.charAt(i))%q;
+    }
+    
+    for(int i=0;i<=n-m;i++){
+      if(p==t){
+        int j = 0;
+        for(j=0;j<m;j++){
+          if(txt.charAt(i+j)!=pat.charAt(j)){
+            break;
+          }
+        }
+        if(j==m){
+          System.out.print(i+ " ");
+        }
+      }
+      
+      if(i<n-m){
+        t = (d*(t - txt.charAt(i)*h) + txt.charAt(i+m))%q;
+        if(t<0)
+          t=t+q;
+      }
+    }
+  }
+}
+```
